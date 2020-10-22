@@ -1,0 +1,76 @@
+
+a = math.random(1,10)
+b = 0 -- Covid indicator
+c = 1 -- Test counter
+x = {} -- Postive test table
+y = {} -- Who is tested
+t=0
+
+print("Of a group of 10 people labelled 1,2,...,9,10,  1 person is infected.")
+print("By testing samples from each person, or a mixture of multiple samples decide who is infected in least attempts")
+Test()
+for i=1,10 do
+  if a == i then
+    x[i] = i
+  elseif a ~= i then
+    x[i] = nil
+  end
+
+end
+
+print(3 , x[3])
+function Reset()
+  for i=1,10 do
+  y[i] = nil
+end
+end
+
+
+
+function Who()
+print("Test " .. c)
+for i=1,10 do
+print("Who would you like to test?")
+y[i] = io.read("*line")
+print("Would you like to mix the sample with anyone else's?")
+local Response = io.read("*line")
+if  Response == "no" or  Response == "No" then
+  break
+end
+end
+end
+
+
+function Test()
+Who()
+for i=1,10 do
+print(x[i])
+  for j=1,10 do
+    if x[i] == y[j] then
+      b=b+1
+    end
+end
+
+
+if b ~= 0 then
+    print("The tests came back postive")
+else 
+    print("The tests came back negative")
+b = 0
+end
+Reset()
+
+print("Would you like to test again?")
+z = io.read("*line")
+if z == "yes" or z == "Yes" or z == "ok" or z == "Ok" then
+    c = c + 1
+    Test()
+else
+  print(" Who do you think is infected? ")
+ m1 = io.read("*line")
+  print(a .. " Is actually infected")
+  end
+print("You guessed " .. m1 .. " was infected in " .. c .. " tests")
+
+end
+end
