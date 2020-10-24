@@ -1,22 +1,22 @@
 
-a = math.random(1,10)
+a = math.random(1,15)
 b = 0 -- Covid indicator
 c = 1 -- Test counter
 x = {} -- Postive test table
 y = {} -- Who is tested
 
-for i=1,10 do
+for i=1,15 do
 	if a == i then
 		x[i] = a
 	end
 end
 
 
-print("Of a group of 10 people labelled 1,2,...,9,10,  1 person is infected.")
+print("Of a group of 15 people labelled 1,2,...,14,15,  1 person is infected.")
 print("By testing samples from each person, or a mixture of multiple samples decide who is infected in least attempts")
 
 function Reset()
-	for i=1,10 do
+	for i=1,15 do
 		y[i] = nil
 	end
 end
@@ -38,8 +38,8 @@ end
 function Test()
 	Who()
 	 
-	for i=1,10 do
-	  	for j=1,10 do
+	for i=1,15 do
+	  	for j=1,15 do
 	    	if x[i] == y[j] then
 	      		if x[i] ~= nil then
 	      			b = b + 1
